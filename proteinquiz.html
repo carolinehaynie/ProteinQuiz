@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Protein Personality Quiz</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      padding: 2rem;
+      max-width: 800px;
+      margin: auto;
+      background: #f8f9fa;
+      color: #333;
+    }
+    h1 {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+    .question {
+      margin-bottom: 2rem;
+    }
+    button {
+      padding: 0.5rem 1rem;
+      font-size: 1rem;
+      display: block;
+      margin: 0 auto 2rem;
+    }
+    /* Hide profiles until after submit */
+    #profiles {
+      display: none;
+      margin-top: 2rem;
+    }
+    .profile {
+      background: white;
+      padding: 20px;
+      margin-bottom: 30px;
+      border-radius: 10px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+    .profile h2 {
+      margin-top: 0;
+      color: #0056b3;
+    }
+    .percent-match {
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+    .traits {
+      font-style: italic;
+      margin-bottom: 10px;
+      color: #666;
+    }
+    .fun-fact {
+      margin-top: 10px;
+      color: #008000;
+    }
+
+    /* universal right-aligned photo layout */
+    .profile .profile-inner {
+      display: flex;
+      align-items: center;
+    }
+    .profile .profile-text {
+      flex: 1;
+    }
+    .profile .media {
+      margin-left: 20px;
+      width: 300px;
+      flex-shrink: 0;
+    }
+    .profile .media img {
+      width: 100%;
+      height: auto;
+      border-radius: 8px;
+      display: block;
+    }
+    .profile .media .citation {
+      font-size: 0.9rem;
+      color: #555;
+      margin-top: 6px;
+      font-style: italic;
+      word-break: break-word;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Which Protein Are You?</h1>
+  <form id="quizForm"></form>
+  <button type="submit" form="quizForm">Submit</button>
+
+  <div id="profiles">
+    <!-- a: Hemoglobin -->
+    <div class="profile" data-key="a">
+      <div class="profile-inner">
+        <div class="profile-text">
+          <h2>Hemoglobin: The Provider</h2>
+          <div class="percent-match"></div>
+          <div class="traits">Traits: Generous, Selfless, Reliable</div>
+          <p>
+            Providers are generous and selfless. They give what they can to those in need, often putting others first.
+            Similarly, hemoglobin can be thought of as a provider protein in the human body. Hemoglobin carries oxygen
+            from the lungs to various tissues throughout the body. Hemoglobin is a tetramer: it has four protein subunits
+            folded together in a quaternary structure that form a circular ring arrangement. Each protein subunit contains one heme, which is a molecule that holds iron.
+            That iron binds oxygen in the lungs, making hemoglobin the primary delivery service for one of the body’s most
+            vital resources. Without it, cells couldn’t perform their essential functions. In this way, hemoglobin provides
+            for the entire body.
+          </p>
+          <div class="fun-fact"><strong>Fun Fact:</strong> In 1825, Johann Friedrich Engelhart became the first person to measure a protein's molecular mass using hemoglobin.</div>
+        </div>
+        <div class="media">
+          <img src="hemoglobin.png" alt="Hemoglobin tetramer">
+          <div class="citation">Hemoglobin tetramer (blue and red) with heme at each subunit (green). PDB: 2DN1.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- b: Histone H3 -->
+    <div class="profile" data-key="b">
+      <div class="profile-inner">
+        <div class="profile-text">
+          <h2>Histone H3: The Manager</h2>
+          <div class="percent-match"></div>
+          <div class="traits">Traits: Organized, Strategic, Dependable</div>
+          <p>
+            Managers are organizers. They coordinate complex systems, delegate tasks, and keep everything running smoothly. Similarly, histones are responsible for managing genetic information in a cell.
+            Histone proteins are shaped to form a spool-like core, around which DNA wraps to form chromatin. This compaction is not just for
+            storage—it controls access to genes. Histone H3 has a flexible tail that sticks out and can be chemically modified, altering how
+            tightly DNA is wound. These structural tweaks change which genes are exposed or hidden, controlling the flow of genetic information.
+            It's precision management at the molecular level.
+          </p>
+          <div class="fun-fact"><strong>Fun Fact:</strong> Each human cell has about 1.8 meters of DNA, but histones can compact this into about 0.09 millimeters.</div>
+        </div>
+        <div class="media">
+          <img src="histone.png" alt="Histone H3 epigenetic modifications">
+          <div class="citation">DNA (orange) wrapped around histone (rainbow). PDB: 1F66.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- c: Polymerase -->
+    <div class="profile" data-key="c">
+      <div class="profile-inner">
+        <div class="profile-text">
+          <h2>Polymerase: The Architect</h2>
+          <div class="percent-match"></div>
+          <div class="traits">Traits: Analytical, Creative, Focused</div>
+          <p>
+            Architects are planners and builders. They’re detail-oriented and love turning blueprints into reality. Polymerases perform a similar function in the cell.
+            These enzymes have intricate active sites shaped to match specific nucleotide bases. As they move along a DNA or RNA strand,
+            their shape shifts to guide the assembly of a new polymer. Structural changes ensure only the correct pieces are added,
+            making the final product highly accurate. Polymerases read genetic code and build the foundational chains of life—one careful step at a time.
+          </p>
+          <div class="fun-fact"><strong>Fun Fact:</strong> Builds DNA and RNA one nucleotide at a time with near-perfect accuracy.</div>
+        </div>
+        <div class="media">
+          <img src="polymerase.jpeg" alt="RNA/DNA polymerase">
+          <div class="citation">RNA Polymerase (purple) bound to DNA (green and orange). PDB: 1CEZ.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- d: Myosin -->
+    <div class="profile" data-key="d">
+      <div class="profile-inner">
+        <div class="profile-text">
+          <h2>Myosin: The Athlete</h2>
+          <div class="percent-match"></div>
+          <div class="traits">Traits: Energetic, Disciplined, Driven</div>
+          <p>
+            Athletes thrive on motion, strength, and discipline. They’re always in action—just like myosin. Myosin has a distinct head domain
+            that binds to actin filaments and a tail that anchors it to cargo or structures. The head uses ATP to change shape, swinging like a
+            lever to “walk” along actin. This shape-shifting mechanism—called the power stroke—is what powers muscle contraction and cellular transport.
+            It’s a protein built for movement.
+          </p>
+          <div class="fun-fact"><strong>Fun Fact:</strong> Longer myosin proteins can move muscle farther per power stroke—just like people with long legs can move farther with each step.</div>
+        </div>
+        <div class="media">
+          <img src="myosin.gif" alt="Myosin walking along actin">
+          <div class="citation">Myosin (pink and yellow) moving along a filament of actin (green). PDB: 1B7T.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- e: p53 -->
+    <div class="profile" data-key="e">
+      <div class="profile-inner">
+        <div class="profile-text">
+          <h2>p53: The Guardian</h2>
+          <div class="percent-match"></div>
+          <div class="traits">Traits: Protective, Ethical, Alert</div>
+          <p>
+            Guardians protect what matters most. They’re responsible, vigilant, and ready to act. p53 plays a similar role in our cells.
+            It's often called the “guardian of the genome” because of its role in preventing cancer. p53 is a transcription factor with a highly
+            specific DNA-binding domain shaped to recognize damage response genes. When DNA is damaged, p53 steps in. It can pause the cell cycle,
+            repair the DNA, or—if the damage is beyond repair—initiate cell death (apoptosis). This keeps mutations from spreading and protects
+            the integrity of the organism.
+          </p>
+          <div class="fun-fact"><strong>Fun Fact:</strong> p53 regulates the expression of over 500 genes.</div>
+        </div>
+        <div class="media">
+          <img src="p53.gif" alt="P53 DNA-binding domain">
+          <div class="citation">p53 (pink and yellow) bound to DNA (green and blue). PDB: 1TUP.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- f: Immunoglobulin -->
+    <div class="profile" data-key="f">
+      <div class="profile-inner">
+        <div class="profile-text">
+          <h2>Immunoglobulin: The Warrior</h2>
+          <div class="percent-match"></div>
+          <div class="traits">Traits: Brave, Loyal, Quick to Respond</div>
+          <p>
+            Warriors are defenders—loyal, brave, and quick to act. Immunoglobulins (AKA antibodies) are the immune system’s elite guards.
+            These Y-shaped proteins have flexible arms with highly variable tips that are fine-tuned to bind specific antigens. This structural
+            adaptability lets each antibody target a unique threat. Once bound, they signal other immune cells to take action. Their precision
+            and structure are what make them such formidable protectors.
+          </p>
+          <div class="fun-fact"><strong>Fun Fact:</strong> Immunoglobulin is produced in response to vaccines to protect the body from pathogens.</div>
+        </div>
+        <div class="media">
+          <img src="immunoglobulin.gif" alt="Antibody structure">
+          <div class="citation">Immunoglobulin with binding sites shown in yellow. PDB: 1IGT. </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- g: NMDA Receptor -->
+    <div class="profile" data-key="g">
+      <div class="profile-inner">
+        <div class="profile-text">
+          <h2>NMDA Receptor: The Thinker</h2>
+          <div class="percent-match"></div>
+          <div class="traits">Traits: Reflective, Sensitive, Insightful</div>
+          <p>
+            Thinkers are careful, analytical decision-makers. The NMDA receptor in the brain works similarly by controlling how neurons connect
+            and strengthen through experience. Structurally, it’s a multi-subunit protein that acts like a gatekeeper. It only opens when it
+            receives specific signals, allowing ions to flow into the neuron, which strengthens connections for learning and memory. However,
+            if overstimulated, it can cause damage, just like a thinker overwhelmed by too much information.
+          </p>
+          <div class="fun-fact"><strong>Fun Fact:</strong> Activity of NMDA is blocked by pyschoactive drugs such as alcohol.</div>
+        </div>
+        <div class="media">
+          <img src="NMDA.jpeg" alt="NMDA receptor. PDB: 4PE5">
+          <div class="citation">NMDA receptor. PDB: 4PE5.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- h: Luciferase -->
+    <div class="profile" data-key="h">
+      <div class="profile-inner">
+        <div class="profile-text">
+          <h2>Luciferase: The Entertainer</h2>
+          <div class="percent-match"></div>
+          <div class="traits">Traits: Charismatic, Creative, Dazzling</div>
+          <p>
+            Entertainers dazzle and inspire. They shine—literally, in the case of luciferase. Luciferase has a specialized binding pocket that
+            reacts with a molecule called luciferin to produce light. Luciferase is the enzyme responsible for bioluminescence in living organisms. It catalyzes a reaction that produces light by using a luciferin cofactor to make a very energetic complex with oxygen. When this complex breaks, light is emitted. Scientists have
+            harnessed luciferase for research, using its glow to track gene expression and visualize molecular events in real time.
+          </p>
+          <div class="fun-fact"><strong>Fun Fact:</strong> Luciferase is responsible for the glow in fireflies and used in research to visualize gene expression.</div>
+        </div>
+        <div class="media">
+          <img src="luciferase.jpg" alt="Luciferase enzyme">
+          <div class="citation">Luciferase (purple) glowing chromophore (yellow). PDB: 2D1S.</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <script>
+    const answerKey = ['a','b','c','d','e','f','g','h'];
+    const questions = [
+      {
+        q: "What’s your ideal role in a group project?",
+        a: [
+          "Providing resources and keeping everyone fueled and focused.",
+          "Overseeing project conception and delegating tasks.",
+          "Designing and building out the structure of the project.",
+          "Volunteering to do the heavy lifting and meeting deadlines.",
+          "Troubleshooting issues that arise with the project.",
+          "Defending the group’s ideas and making sure everyone's input is respected.",
+          "Brainstorming ideas and assisting with the creative direction that the project takes.",
+          "Presenting the finished project with the goal of entertaining and engaging the audience."
+        ]
+      },
+      {
+        q: "What do your friends rely on you for?",
+        a: [
+          "Support and stability—they know I’ll always come through.",
+          "Coordination and control—I keep things on track.",
+          "Craftiness and handiness—I can make whatever they need.",
+          "Drive and action—I get things moving.",
+          "Problem-solving—I always have a solution to their problems.",
+          "Loyalty and strength—I’ll fight for them.",
+          "Thought and introspection—I'm always ready for a deep conversation.",
+          "Fun and flair—I bring the spark."
+        ]
+      },
+      {
+        q: "What's your favorite part of your day?",
+        a: [
+          "Checking in on the people I care about.",
+          "Making detailed plans for the day.",
+          "Working on projects or hobbies.",
+          "Engaging in physical activity.",
+          "Catching up on housework--cleaning, fixing, cooking, or general maintenance.",
+          "Thinking strategically through puzzles or board games.",
+          "Journaling or engaging in mindfulness practices.",
+          "Having fun with people and making them smile."
+        ]
+      },
+      {
+        q: "What is your first instinct in dealing with conflict?",
+        a: [
+          "Mediate and provide assistance to everyone involved.",
+          "Take control and provide a clear path towards resolution.",
+          "Use tried-and-true methods to provide a structured solution.",
+          "Take action by stepping in to defuse the situation.",
+          "Identify and address the source of the conflict before dealing with the fallout.",
+          "Defend the side that is being damaged most by the conflict.",
+          "Pause to collect my thoughts before attempting to provide deep insight.",
+          "Use humor or distraction to diffuse the tension."
+        ]
+      },
+      {
+        q: "How do you handle stress?",
+        a: [
+          "I prioritize the feelings of others, so I keep my stress to myself.",
+          "I use stress as a motivator to get the job done.",
+          "I use mental health frameworks to manage stress.",
+          "I do physical activity to clear my mind.",
+          "I try to remove or minimize stressors in my life before they cause problems.",
+          "I aggressively combat sources of stress using whatever means necessary.",
+          "I fixate on thinking about the source of the stress.",
+          "I try to distract myself from my stress or focus on the bright side."
+        ]
+      },
+      {
+        q: "What feeling do you struggle with?",
+        a: [
+          "Questioning whether I'm doing enough for the people around me.",
+          "Relinquishing control over a situation, even if it’s for the best.",
+          "Doubting my abilities when a project doesn't go to plan.",
+          "Failing to push past an obstacle that should be simple.",
+          "Worrying that I cannot protect the people I care about.",
+          "Questioning my ability to fight for my values.",
+          "Worrying about coming across as stupid or thoughtless.",
+          "Feeling like nobody notices me."
+        ]
+      },
+      {  
+        q: "What environment do you thrive in?",
+        a: [
+          "Anywhere I’m needed—I’m adaptable.",
+          "A well-structured routine.",
+          "A fast-paced lab or workshop.",
+          "In motion—I love being active.",
+          "Somewhere I can keep watch and keep things in balance.",
+          "A high-stakes situation where I can take action.",
+          "A quiet space to think and create.",
+          "On stage, or anywhere I can shine."
+        ]
+      },
+      {
+        q: "What virtue do you try to embody?",
+        a: [
+          "Generosity.", "Leadership.", "Diligence.", "Strength.",
+          "Justice.", "Bravery.", "Wisdom.", "Magnificence."
+        ]
+      },
+      {
+        q: "What’s your dream job in a fantasy world?",
+        a: [
+          "Healer in a bustling village—everyone comes to me for support.",
+          "Master strategist for a royal court—keeping order and advising wisely.",
+          "Architect of magical machines—bringing ideas to life.",
+          "Knight or adventurer—constantly in motion and on a mission.",
+          "Guardian of ancient knowledge—always alert to threats.",
+          "Defender of the realm—trained and ready for combat.",
+          "Seer or sage—quietly guiding others through wisdom.",
+          "Bard or illusionist—entertaining and enchanting crowds."
+        ]
+      },
+      {
+        q: "At a dinner party, you’re most likely to:",
+        a: [
+          "Make sure everyone has what they need and feels at home.",
+          "Help the host keep everything running smoothly.",
+          "Discuss innovative ideas and maybe sketch something on a napkin.",
+          "Join or start a game that gets everyone moving.",
+          "Notice who’s feeling off and quietly check in on them.",
+          "Stand up for someone if a conversation gets heated.",
+          "Ask deep, thought-provoking questions over dessert.",
+          "Lead a singalong or tell a killer story."
+]
+},
+{
+    q: "When you arrive at a party, what do you do first?",
+    a: [
+      "Check that everyone has a drink and introduce shy guests to others.",         // a
+      "Help the host organize the music and seating so things run smoothly.",        // b
+      "Peek at the setup and start imagining how you’d design the next event.",     // c
+      "Head straight for the dance floor or start a fun activity.",                 // d
+      "Scan the room for anyone who looks uncomfortable and offer support.",         // e
+      "Stand guard over the snack table in case anyone messes it up.",              // f
+      "Find a quiet corner to converse deeply with someone.",                       // g
+      "Grab the mic or gather everyone for a group photo to capture the moment."    // h
+    ]
+  },
+  {
+q: "How do you approach learning a new skill?",
+    a: [
+      "Ask for help and encouragement so I don’t get stuck.",          // a
+      "Map out a detailed lesson plan and schedule my practice sessions.", // b
+      "Break it down into its core components and build from the ground up.", // c
+      "Jump right in and learn by doing, even if I mess up at first.",   // d
+      "Identify potential pitfalls and prepare safeguards before starting.", // e
+      "Stand firm on proven methods, defending them against shortcuts.", // f
+      "Reflect on the theory and understand the ‘why’ before I try it.", // g
+      "Make it fun—learn with games, songs, or performances."           // h
+    ]
+  },
+  {
+ q: "When a friend is feeling down, you:",
+    a: [
+      "Offer practical help—bring soup, set up a cozy spot, listen.",   // a
+      "Help them organize their thoughts and make a step-by-step plan.", // b
+      "Explain the big picture and how setbacks fit into their growth.",// c
+      "Suggest a workout or outdoor adventure to shake it off.",        // d
+      "Stay by their side and watch for signs they need more help.",    // e
+      "Defend them fiercely against anyone who’s been unfair.",         // f
+      "Sit quietly and talk through how they really feel.",             // g
+      "Crack jokes or tell stories to lighten the mood."                // h
+        ]
+      }
+    ];
+
+    const form = document.getElementById('quizForm');
+    const submitBtn = document.querySelector('button[type="submit"]');
+
+    // Build the quiz form
+    questions.forEach((q, i) => {
+      const div = document.createElement('div');
+      div.className = 'question';
+      div.innerHTML = `<p>${i+1}. ${q.q}</p>`;
+      const answers = q.a.map((text, idx) => ({ text, idx }));
+      for (let j = answers.length - 1; j > 0; j--) {
+        const k = Math.floor(Math.random()*(j+1));
+        [answers[j], answers[k]] = [answers[k], answers[j]];
+      }
+      answers.forEach(({ text, idx }) => {
+        div.innerHTML += `
+          <label>
+            <input type="radio" name="q${i}" value="${answerKey[idx]}" required>
+            ${text}
+          </label><br>`;
+      });
+      form.appendChild(div);
+    });
+
+    form.addEventListener('submit', e => {
+      e.preventDefault();
+      const data = new FormData(form);
+      const counts = { a:0,b:0,c:0,d:0,e:0,f:0,g:0,h:0 };
+      for (let [,v] of data) if (counts[v] !== undefined) counts[v]++;
+      const total = Object.values(counts).reduce((s,v) => s+v, 0);
+      const results = Object.entries(counts).map(([key,val]) => ({
+        key,
+        percent: ((val/total)*100).toFixed(1)
+      }));
+      form.style.display = 'none';
+      submitBtn.style.display = 'none';
+      // Inject scores into their boxes
+const profilesContainer = document.getElementById('profiles');
+results.forEach(r => {
+  const el = profilesContainer.querySelector(`.profile[data-key="${r.key}"] .percent-match`);
+  if (el) el.textContent = `${r.percent}% match`;
+});
+
+// Now sort the DIVs by descending match
+results
+  .sort((a, b) => parseFloat(b.percent) - parseFloat(a.percent))
+  .forEach(r => {
+    const profileDiv = profilesContainer.querySelector(`.profile[data-key="${r.key}"]`);
+    profilesContainer.appendChild(profileDiv);
+  });
+
+// Finally, reveal the sorted profiles
+profilesContainer.style.display = 'block';
+
+    });
+  </script>
+</body>
+</html>
